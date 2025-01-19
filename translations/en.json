@@ -1,4 +1,14 @@
 {
+  "menu": {
+    "items": {
+      "blog": "Blog",
+      "tags": "Tags",
+      "about": "About"
+    },
+    "searchBar": {
+      "placeholder": "Search content"
+    }
+  },
   "HomePage": {
     "title": "Hello world!",
     "about": "About"

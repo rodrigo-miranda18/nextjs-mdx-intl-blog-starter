@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background: #FFF;
+  --color-background-hover: #F2F2F2;
+  --color-secondary-background: #F2F2F2;
+  --color-text: #000;
+  --color-secondary-text: #666;
+  --color-tertiary-text: #8F8F8F;
+  --color-border: #00000014;
+  --color-secondary-border: #EAEAEA;
+
+  --color-main: #0074DE;
+}
+
+.dark {
+  --color-background: #000;
+  --color-background-hover: #FFFFFF14;
+  --color-secondary-background: #0A0A0A;
+  --color-text: #EDEDED;
+  --color-secondary-text: #888;
+  --color-tertiary-text: #A1A1A1;
+  --color-border: #FFFFFF24;
+  --color-secondary-border: #FFFFFF14;
+}
+
+body {
+  color: var(--color-text);
+  background: var(--color-background);
+}
