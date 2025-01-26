@@ -9,8 +9,10 @@
       "placeholder": "Search content"
     }
   },
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "About"
+  "posts": {
+    "readMore": "Read more"
+  },
+  "homePage": {
+    "title": "Latest articles"
   }
 }

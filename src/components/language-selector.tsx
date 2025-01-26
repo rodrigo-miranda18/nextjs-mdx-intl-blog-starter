@@ -60,7 +60,6 @@ export default function LanguageSelector() {
                 key={value}
                 className="focus:ring-ring flex w-full items-center whitespace-nowrap border border-border bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-background transition-colors hover:bg-secondary-background focus:outline-none focus:ring-1 focus-visible:bg-secondary-background"
                 value={value}
-                onSelect={() => console.log('Ativou')}
                 asChild
               >
                 <div className="flex cursor-pointer gap-x-2">

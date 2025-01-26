@@ -33,7 +33,7 @@ export default function Header() {
 
   return (
     <header className="border-b border-secondary-border dark:bg-secondary-background">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
         <div className="flex gap-4">
           <Image
             className="h-7 w-7 invert dark:filter-none"

@@ -17,7 +17,7 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
     >
       <Sun className="h-4.5 w-4.5 text-secondary-text dark:hidden" />
-      <Moon className="h-4.5 w-4.5 hidden text-secondary-text dark:block" />
+      <Moon className="hidden h-4.5 w-4.5 text-secondary-text dark:block" />
     </button>
   );
 }
