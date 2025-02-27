@@ -30,5 +30,8 @@
     "metadata": {
       "description": "Todos os artigos com a tag {tag}"
     }
+  },
+  "postSingle": {
+    "goBack": "Voltar"
   }
 }
