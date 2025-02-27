@@ -1,6 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
+import { routing } from '@/i18n/routing';
+
 interface PostMetadata {
   title: string;
   description: string;
@@ -13,6 +15,11 @@ interface PostMetadata {
 export interface Post {
   slug: string;
   metadata: PostMetadata;
+}
+
+interface Tag {
+  name: string;
+  count: number;
 }
 
 export async function getPost(slug: string, locale: string): Promise<Post> {
@@ -52,6 +59,32 @@ export async function getPosts(locale: string): Promise<Post[]> {
   return posts.sort((a, b) =>
     new Date(a.metadata.publishedDate) > new Date(b.metadata.publishedDate) ? -1 : 1,
   );
+}
+
+export async function getPostsByTag(tag: string, locale: string): Promise<Post[]> {
+  const posts = await getPosts(locale);
+
+  return posts.filter((post) => post.metadata.tags.includes(tag));
+}
+
+export async function getTags(): Promise<Tag[]> {
+  const posts = await getPosts(routing.defaultLocale);
+
+  const tags = posts.reduce((tags: Tag[], post) => {
+    post.metadata.tags.forEach((tag) => {
+      const existingTag = tags.find((t) => t.name === tag);
+
+      if (existingTag) {
+        existingTag.count += 1;
+      } else {
+        tags.push({ name: tag, count: 1 });
+      }
+    });
+
+    return tags;
+  }, []);
+
+  return tags.sort((a, b) => (a.count > b.count ? -1 : 1));
 }
 
 export function formatPostDate(dateString: string, locale: string): string {

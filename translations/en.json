@@ -13,6 +13,22 @@
     "readMore": "Read more"
   },
   "homePage": {
-    "title": "Latest articles"
+    "title": "Latest articles",
+    "metadata": {
+      "title": "Next.js Starter Blog with i18n support",
+      "description": "This is a starter blog site built with Next.js and MDX content, that supports i18n."
+    }
+  },
+  "blogPage": {
+    "tagsTitle": "All tags",
+    "metadata": {
+      "title": "Blog",
+      "description": "This is a starter blog site built with Next.js and MDX content, that supports i18n."
+    }
+  },
+  "tagSingle": {
+    "metadata": {
+      "description": "All articles with the tag {tag}"
+    }
   }
 }

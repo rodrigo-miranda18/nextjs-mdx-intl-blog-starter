@@ -1,10 +1,9 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { useRouter } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
 
-import { routing, usePathname, useRouter as usei18nRouter } from '@/i18n/routing';
+import { usePathname, useRouter } from '@/i18n/routing';
 
 import {
   Root as Select,
@@ -25,18 +24,12 @@ export default function LanguageSelector() {
   const locale = useLocale();
   const pathname = usePathname();
 
-  const router = useRouter();
-  const routeri18n = usei18nRouter();
+  const routeri18n = useRouter();
 
   const selectedItem = languages.find(({ value }) => value === locale);
 
   function handleSelect(value: string) {
-    if (value === routing.defaultLocale) {
-      router.push(`${value}/${pathname}`);
-      return;
-    }
-
-    routeri18n.replace(pathname, { locale: value });
+    routeri18n.push(pathname, { locale: value });
   }
 
   return (

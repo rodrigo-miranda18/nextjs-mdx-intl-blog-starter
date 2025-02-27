@@ -13,6 +13,22 @@
     "readMore": "Ler mais"
   },
   "homePage": {
-    "title": "Últimos publicações"
+    "title": "Últimos publicações",
+    "metadata": {
+      "title": "Next.js Starter Blog com suporte a i18n",
+      "description": "Este é um blog de exemplo construído com Next.js e conteúdo MDX, que suporta i18n."
+    }
+  },
+  "blogPage": {
+    "tagsTitle": "Tags",
+    "metadata": {
+      "title": "Blog",
+      "description": "Este é um blog de exemplo construído com Next.js e conteúdo MDX, que suporta i18n."
+    }
+  },
+  "tagSingle": {
+    "metadata": {
+      "description": "Todos os artigos com a tag {tag}"
+    }
   }
 }

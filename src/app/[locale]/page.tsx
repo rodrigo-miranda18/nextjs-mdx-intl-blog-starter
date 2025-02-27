@@ -45,7 +45,7 @@ export default async function HomePage({ params }: PageProps) {
                   {post.metadata.tags.map((tag) => (
                     <Link
                       key={tag}
-                      href={`/blog/tags/${post.slug}`}
+                      href={`/tags/${tag}`}
                       className="transition-opacity hover:opacity-85"
                     >
                       {tag}

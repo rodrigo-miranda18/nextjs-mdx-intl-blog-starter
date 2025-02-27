@@ -1,11 +1,12 @@
 import { ReactNode } from 'react';
+import { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Geist } from 'next/font/google';
 
-import { routing } from '@/i18n/routing';
+import { getPathname, routing } from '@/i18n/routing';
 
 import Header from './header';
 
@@ -16,6 +17,26 @@ const SansFont = Geist({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
 });
+
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'homePage' });
+
+  return {
+    title: {
+      template: `%s | ${t('metadata.title')}`,
+      default: t('metadata.title'),
+    },
+    description: t('metadata.description'),
+    alternates: {
+      canonical: getPathname({ locale, href: '/' }),
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
