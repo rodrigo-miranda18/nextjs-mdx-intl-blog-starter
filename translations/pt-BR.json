@@ -26,6 +26,13 @@
       "description": "Este é um blog de exemplo construído com Next.js e conteúdo MDX, que suporta i18n."
     }
   },
+  "tagsPage": {
+    "title": "Tags",
+    "metadata": {
+      "title": "Tags",
+      "description": "Este é um blog de exemplo construído com Next.js e conteúdo MDX, que suporta i18n."
+    }
+  },
   "tagSingle": {
     "metadata": {
       "description": "Todos os artigos com a tag {tag}"

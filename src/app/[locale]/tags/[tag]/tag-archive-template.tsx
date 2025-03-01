@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
 import { formatPostDate, getPosts, getPostsByTag, getTags } from '@/lib/utils/posts';
+import { cn } from '@/lib/utils/cn';
 
 import { Link } from '@/i18n/routing';
 
@@ -23,13 +24,16 @@ export default async function TagArchiveTemplate({ locale, tag }: TemplateLayout
           <h3 className="text-xl font-semibold">{blogTranslations('tagsTitle')}</h3>
 
           <ul className="mt-7 space-y-3.5">
-            {tags.map((tag) => (
-              <li key={tag.name}>
+            {tags.map((tagItem) => (
+              <li key={tagItem.name}>
                 <Link
-                  href={`/tags/${tag.name}`}
-                  className="text-sm uppercase text-secondary-text hover:font-semibold hover:text-main"
+                  href={`/tags/${tagItem.name}`}
+                  className={cn(
+                    'text-sm uppercase text-secondary-text hover:font-semibold hover:text-main',
+                    tagItem.name === tag && 'font-semibold text-main',
+                  )}
                 >
-                  {tag.name} ({tag.count})
+                  {tagItem.name} ({tagItem.count})
                 </Link>
               </li>
             ))}
