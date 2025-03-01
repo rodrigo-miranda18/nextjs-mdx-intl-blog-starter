@@ -33,5 +33,15 @@
   },
   "postSingle": {
     "goBack": "Go back"
+  },
+  "aboutPage": {
+    "name": "Rodrigo Miranda",
+    "role": "Software Engineer",
+    "bio": "Building great digital products",
+    "content": "My full name is Rodrigo Alves Miranda, I'm {age}, and I live in Curitiba - PR.\n\n I'm currently working as Front-end developer, and graduating in Information Systems at Technological Federal University of Paraná.\n\n Lorem ipsum odor amet, consectetuer adipiscing elit. Nunc libero pretium tort or nunc lacinia viverra cras ante ullamcorper. Quisque eget inceptos natoque mi mollis integer eu mi.\n\n Quam pulvinar nulla congue habitant fringilla sed eu sapien. Auctor gravida accumsan quis cubilia condimentum habitasse libero. Eget elementum volutpat libero habitant tortor malesuada habitant blandit.\n\n Auctor venenatis diam vitae sagittis ornare neque torquent. Habitant lacus aptent a tellus, dignissim ex. Fames tempor nostra duis justo quam aliquet varius.",
+    "metadata": {
+      "title": "About",
+      "description": "I'm a software engineer and this is my personal blog."
+    }
   }
 }
