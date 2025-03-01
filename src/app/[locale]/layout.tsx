@@ -62,7 +62,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${SansFont.variable}${theme && theme.value === 'dark' ? 'dark' : ''}`}
+      className={`${SansFont.variable}${theme && theme.value === 'dark' ? `${' '}dark` : ''}`}
     >
       <body>
         <NextIntlClientProvider messages={messages}>
