@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { Circle } from 'lucide-react';
+import { Circle, MoveRight } from 'lucide-react';
 
 import { formatPostDate, getPosts } from '@/lib/utils/posts';
 
@@ -15,7 +15,7 @@ export default async function HomePage({ params }: PageProps) {
   const homeTranslations = await getTranslations({ locale, namespace: 'homePage' });
   const postTextsTranslations = await getTranslations({ locale, namespace: 'posts' });
 
-  const posts = await getPosts(locale);
+  const { posts } = await getPosts(locale, 4);
 
   return (
     <section className="mx-auto w-full max-w-5xl px-6 py-12 lg:px-12 lg:py-16">
@@ -67,6 +67,14 @@ export default async function HomePage({ params }: PageProps) {
             </article>
           ))}
         </div>
+
+        <Link
+          href="/blog"
+          className="ml-auto mt-12 block w-fit text-sm font-semibold text-main hover:underline"
+        >
+          {homeTranslations('viewAllPosts')}
+          <MoveRight className="ml-2 inline h-4 w-4" />
+        </Link>
       </main>
     </section>
   );

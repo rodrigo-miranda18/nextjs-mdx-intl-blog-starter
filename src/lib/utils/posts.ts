@@ -17,6 +17,11 @@ export interface Post {
   metadata: PostMetadata;
 }
 
+interface Posts {
+  posts: Post[];
+  totalPages: number;
+}
+
 interface Tag {
   name: string;
   count: number;
@@ -45,7 +50,7 @@ export function getPostSlugs(): string[] {
   return fs.readdirSync(postsDirectory);
 }
 
-export async function getPosts(locale: string): Promise<Post[]> {
+export async function getPosts(locale: string, limit = -1, offset = 0): Promise<Posts> {
   const postSlugs = getPostSlugs();
 
   const posts = await Promise.all(
@@ -56,19 +61,33 @@ export async function getPosts(locale: string): Promise<Post[]> {
     }),
   );
 
-  return posts.sort((a, b) =>
-    new Date(a.metadata.publishedDate) > new Date(b.metadata.publishedDate) ? -1 : 1,
-  );
+  return {
+    posts: posts
+      .sort((a, b) =>
+        new Date(a.metadata.publishedDate) > new Date(b.metadata.publishedDate) ? -1 : 1,
+      )
+      .slice(offset, limit === -1 ? posts.length : offset + limit),
+    totalPages: Math.ceil(posts.length / (limit === -1 ? 1 : limit)),
+  };
 }
 
-export async function getPostsByTag(tag: string, locale: string): Promise<Post[]> {
-  const posts = await getPosts(locale);
+export async function getPostsByTag(
+  tag: string,
+  locale: string,
+  limit = -1,
+  offset = 0,
+): Promise<Posts> {
+  const { posts } = await getPosts(locale);
+  const filteredPosts = posts.filter((post) => post.metadata.tags.includes(tag));
 
-  return posts.filter((post) => post.metadata.tags.includes(tag));
+  return {
+    posts: filteredPosts.slice(offset, limit === -1 ? filteredPosts.length : offset + limit),
+    totalPages: Math.ceil(filteredPosts.length / (limit === -1 ? 1 : limit)),
+  };
 }
 
 export async function getTags(): Promise<Tag[]> {
-  const posts = await getPosts(routing.defaultLocale);
+  const { posts } = await getPosts(routing.defaultLocale);
 
   const tags = posts.reduce((tags: Tag[], post) => {
     post.metadata.tags.forEach((tag) => {

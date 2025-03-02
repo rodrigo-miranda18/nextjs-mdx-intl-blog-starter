@@ -26,13 +26,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export async function generateStaticParams() {
   const tags = await getTags();
-  const paths = tags.flatMap((tag) => routing.locales.map((locale) => ({ locale, tag: tag.name })));
+  const paths = tags.flatMap((tag) =>
+    routing.locales.map((locale) => ({ locale, tag: encodeURI(tag.name) })),
+  );
 
   return paths;
 }
 
 export default async function TagArchivePage({ params }: PageProps) {
-  const { locale, tag } = await params;
+  const { locale, tag: encodedTag } = await params;
+  const tag = decodeURI(encodedTag);
   const tags = await getTags();
 
   if (!tags.find((t) => t.name === tag)) {

@@ -1,0 +1,76 @@
+export const metadata = {
+  title: 'Building APIs with Next.js',
+  description: 'Learn how to build APIs with Next.js using App Router and Route Handlers, dynamic routing, middleware logic, and handling multiple HTTP methods.',
+  publishedDate: '2025-02-16T12:00:00Z',
+	timeToRead: '3min read',
+	heroImage: '/posts/building-apis-with-nextjs.png',
+  tags: ['next.js', 'react', 'api'],
+}
+
+## Introduction
+
+Lorem ipsum odor amet, consectetuer adipiscing elit. Nunc libero pretium tortor nunc lacinia viverra cras ante ullamcorper. Quisque eget inceptos natoque mi mollis integer eu mi.
+
+Quam pulvinar nulla congue habitant fringilla sed eu sapien. Auctor gravida accumsan quis cubilia condimentum habitasse libero. Eget elementum volutpat libero habitant tortor malesuada habitant blandit.
+
+### Why (and when) to build APIs with Next.js
+
+Lorem ipsum odor amet, consectetuer adipiscing elit. Nunc libero pretium tortor nunc lacinia viverra cras ante ullamcorper. Quisque eget inceptos natoque mi mollis integer eu mi.
+
+Quam pulvinar nulla congue habitant fringilla sed eu sapien. Auctor gravida accumsan quis cubilia condimentum habitasse libero. Eget elementum volutpat libero habitant tortor malesuada habitant blandit.
+
+- Lorem ipsum dolor sit amet
+- Consectetur adipiscing elit
+- Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+
+## Building APIs with Next.js
+
+Lorem ipsum odor amet, consectetuer adipiscing elit. Nunc libero pretium tortor nunc lacinia viverra cras ante ullamcorper. Quisque eget inceptos natoque mi mollis integer eu mi.
+
+```jsx
+app
+└── api
+    └── users
+        └── route.ts
+```
+
+Quam pulvinar nulla congue habitant fringilla sed eu sapien. Auctor gravida accumsan quis cubilia condimentum habitasse libero. Eget elementum volutpat libero habitant tortor malesuada habitant blandit.
+
+Auctor venenatis diam vitae sagittis ornare neque torquent. Habitant lacus aptent a tellus, dignissim ex. Fames tempor nostra duis justo quam aliquet varius.
+
+```jsx
+export async function GET(request: Request) {
+  // For example, fetch data from your DB here
+  const users = [
+    { id: 1, name: 'Alice' },
+    { id: 2, name: 'Bob' }
+  ];
+  return new Response(JSON.stringify(users), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' }
+  });
+}
+ 
+export async function POST(request: Request) {
+  // Parse the request body
+  const body = await request.json();
+  const { name } = body;
+ 
+  // e.g. Insert new user into your DB
+  const newUser = { id: Date.now(), name };
+ 
+  return new Response(JSON.stringify(newUser), {
+    status: 201,
+    headers: { 'Content-Type': 'application/json' }
+  });
+}
+```
+
+## Conclusion
+
+Lorem ipsum odor amet, consectetuer adipiscing elit. Nunc libero pretium tortor nunc lacinia viverra cras ante ullamcorper. Quisque eget inceptos natoque mi mollis integer eu mi.
+
+Quam pulvinar nulla congue habitant fringilla sed eu sapien. Auctor gravida accumsan quis cubilia condimentum habitasse libero. Eget elementum volutpat libero habitant tortor malesuada habitant blandit.
+
+Auctor venenatis diam vitae sagittis ornare neque torquent. Habitant lacus aptent a tellus, dignissim ex. Fames tempor nostra duis justo quam aliquet varius.
+

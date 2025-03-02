@@ -1,21 +1,34 @@
+import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
 import { formatPostDate, getPosts, getPostsByTag, getTags } from '@/lib/utils/posts';
 import { cn } from '@/lib/utils/cn';
 
 import { Link } from '@/i18n/routing';
+import Pagination from '@/components/pagination';
 
 interface TemplateLayoutProps {
   locale: string;
   tag?: string;
+  page?: number;
 }
 
-export default async function TagArchiveTemplate({ locale, tag }: TemplateLayoutProps) {
+export const POSTS_PER_PAGE = 4;
+
+export default async function TagArchiveTemplate({ locale, tag, page }: TemplateLayoutProps) {
   const blogTranslations = await getTranslations({ locale, namespace: 'blogPage' });
   const postTextsTranslations = await getTranslations({ locale, namespace: 'posts' });
 
+  const offset = page ? (page - 1) * POSTS_PER_PAGE : 0;
+
   const tags = await getTags();
-  const posts = await (tag ? getPostsByTag(tag, locale) : getPosts(locale));
+  const { posts, totalPages } = await (tag
+    ? getPostsByTag(tag, locale, POSTS_PER_PAGE, offset)
+    : getPosts(locale, POSTS_PER_PAGE, offset));
+
+  if (page && page > totalPages) {
+    return notFound();
+  }
 
   return (
     <section className="mx-auto flex w-full max-w-4xl px-6 py-12 lg:px-10 lg:py-20">
@@ -86,6 +99,10 @@ export default async function TagArchiveTemplate({ locale, tag }: TemplateLayout
             </Link>
           </article>
         ))}
+
+        {totalPages > 1 && (
+          <Pagination className="!mt-12" currentPage={page || 1} totalPages={totalPages} />
+        )}
       </main>
     </section>
   );

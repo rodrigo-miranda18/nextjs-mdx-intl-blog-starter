@@ -14,6 +14,7 @@
   },
   "homePage": {
     "title": "Últimos publicações",
+    "viewAllPosts": "Ver todos",
     "metadata": {
       "title": "Next.js Starter Blog com suporte a i18n",
       "description": "Este é um blog de exemplo construído com Next.js e conteúdo MDX, que suporta i18n."
@@ -50,5 +51,10 @@
       "title": "Sobre",
       "description": "Sou um engenheiro de software e este é meu blog pessoal."
     }
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Próximo",
+    "of": "de"
   }
 }
