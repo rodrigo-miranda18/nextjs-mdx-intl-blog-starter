@@ -34,7 +34,7 @@ export default async function TagArchiveTemplate({ locale, tag, page }: Template
     <section className="mx-auto flex w-full max-w-4xl px-6 py-12 lg:px-10 lg:py-20">
       {tags.length > 0 && (
         <aside className="hidden min-w-48 border-r border-border md:block">
-          <h3 className="text-xl font-semibold">{blogTranslations('tagsTitle')}</h3>
+          <h1 className="text-xl font-semibold">{blogTranslations('tagsTitle')}</h1>
 
           <ul className="mt-7 space-y-3.5">
             {tags.map((tagItem) => (

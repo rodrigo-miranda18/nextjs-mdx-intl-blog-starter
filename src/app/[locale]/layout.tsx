@@ -6,6 +6,7 @@ import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Geist } from 'next/font/google';
 
+import generatePageMetadata from '@/lib/utils/seo';
 import { getPathname, routing } from '@/i18n/routing';
 
 import Header from './header';
@@ -26,16 +27,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'homePage' });
 
-  return {
+  return generatePageMetadata({
     title: {
       template: `%s | ${t('metadata.title')}`,
       default: t('metadata.title'),
     },
     description: t('metadata.description'),
-    alternates: {
-      canonical: getPathname({ locale, href: '/' }),
-    },
-  };
+    url: getPathname({ locale, href: '/' }),
+    locale,
+  });
 }
 
 export default async function LocaleLayout({

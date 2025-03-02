@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
+import generatePageMetadata from '@/lib/utils/seo';
 import { getPathname, Link } from '@/i18n/routing';
 
 import GithubIcon from '@/components/brand-icons/github';
@@ -16,13 +17,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'aboutPage' });
 
-  return {
+  const url = getPathname({ locale, href: `/about` });
+
+  return generatePageMetadata({
     title: t('metadata.title'),
     description: t('metadata.description'),
-    alternates: {
-      canonical: getPathname({ locale, href: `/about` }),
-    },
-  };
+    url,
+    locale,
+  });
 }
 
 function getAge(): number {

@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
 import { getPathname, routing } from '@/i18n/routing';
+import generatePageMetadata from '@/lib/utils/seo';
 import { getPosts } from '@/lib/utils/posts';
 
 import TagArchiveTemplate, { POSTS_PER_PAGE } from '../../../tags/[tag]/tag-archive-template';
@@ -20,15 +21,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const t = await getTranslations({ locale, namespace: 'blogPage' });
+  const url = getPathname({ locale, href: `/blog/page/${pageNumber}` });
 
-  return {
+  return generatePageMetadata({
     title: `${t('metadata.title')} - Page ${pageNumber}`,
     description: t('metadata.description'),
-    alternates: {
-      canonical: getPathname({ locale, href: `/blog/page/${pageNumber}` }),
-    },
+    url,
+    locale,
     // Add pagination metadata when next.js supports it
-  };
+  });
 }
 
 export async function generateStaticParams() {

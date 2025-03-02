@@ -2,8 +2,9 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
-import { getPathname, routing } from '@/i18n/routing';
+import generatePageMetadata from '@/lib/utils/seo';
 import { getTags } from '@/lib/utils/posts';
+import { getPathname, routing } from '@/i18n/routing';
 
 import TagArchiveTemplate from './tag-archive-template';
 
@@ -15,13 +16,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale, tag } = await params;
   const t = await getTranslations({ locale, namespace: 'tagSingle' });
 
-  return {
+  const url = getPathname({ locale, href: `/tags/${tag}` });
+
+  return generatePageMetadata({
     title: tag.toUpperCase(),
     description: t('metadata.description', { tag }),
-    alternates: {
-      canonical: getPathname({ locale, href: `/tags/${tag}` }),
-    },
-  };
+    url,
+    locale,
+  });
 }
 
 export async function generateStaticParams() {

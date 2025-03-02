@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
+import generatePageMetadata from '@/lib/utils/seo';
 import { getTags } from '@/lib/utils/posts';
 import { getPathname, Link } from '@/i18n/routing';
 
@@ -12,13 +13,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'tagsPage' });
 
-  return {
+  const url = getPathname({ locale, href: '/tags' });
+
+  return generatePageMetadata({
     title: t('metadata.title'),
     description: t('metadata.description'),
-    alternates: {
-      canonical: getPathname({ locale, href: '/tags' }),
-    },
-  };
+    url,
+    locale,
+  });
 }
 
 export default async function TagsPage({ params }: PageProps) {

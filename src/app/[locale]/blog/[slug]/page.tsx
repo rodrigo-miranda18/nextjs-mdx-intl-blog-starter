@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { ChevronLeft } from 'lucide-react';
 
-import { Link, routing } from '@/i18n/routing';
 import { formatPostDate, getPost, getPostSlugs } from '@/lib/utils/posts';
+import { getPathname, Link, routing } from '@/i18n/routing';
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -24,11 +24,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: metadata.title,
     description: metadata.description,
+    alternates: {
+      canonical: getPathname({ locale, href: `/blog/${slug}` }),
+    },
     openGraph: {
       type: 'article',
       title: metadata.title,
       description: metadata.description,
+      siteName: 'Next.js i18n Starter Blog',
+      locale,
       publishedTime: metadata.publishedDate,
+      modifiedTime: metadata.modifiedDate || metadata.publishedDate,
       url: `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/blog/${slug}`,
       ...(ogImage && { images: [ogImage] }),
     },
