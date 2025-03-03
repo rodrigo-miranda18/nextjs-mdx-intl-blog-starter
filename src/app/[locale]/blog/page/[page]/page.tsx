@@ -21,12 +21,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const t = await getTranslations({ locale, namespace: 'blogPage' });
-  const url = getPathname({ locale, href: `/blog/page/${pageNumber}` });
+  const pathname = getPathname({ locale, href: `/blog/page/${pageNumber}` });
 
   return generatePageMetadata({
     title: `${t('metadata.title')} - Page ${pageNumber}`,
     description: t('metadata.description'),
-    url,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}${pathname}`,
     locale,
     // Add pagination metadata when next.js supports it
   });

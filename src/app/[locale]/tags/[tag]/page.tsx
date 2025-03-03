@@ -16,12 +16,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale, tag } = await params;
   const t = await getTranslations({ locale, namespace: 'tagSingle' });
 
-  const url = getPathname({ locale, href: `/tags/${tag}` });
+  const pathname = getPathname({ locale, href: `/tags/${tag}` });
 
   return generatePageMetadata({
     title: tag.toUpperCase(),
     description: t('metadata.description', { tag }),
-    url,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}${pathname}`,
     locale,
   });
 }

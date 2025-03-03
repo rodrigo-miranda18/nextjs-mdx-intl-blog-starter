@@ -27,13 +27,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'homePage' });
 
+  const pathname = getPathname({ locale, href: '/' });
+
   return generatePageMetadata({
     title: {
       template: `%s | ${t('metadata.title')}`,
       default: t('metadata.title'),
     },
     description: t('metadata.description'),
-    url: getPathname({ locale, href: '/' }),
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}${pathname}`,
     locale,
   });
 }

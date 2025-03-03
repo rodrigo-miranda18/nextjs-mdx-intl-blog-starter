@@ -21,11 +21,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       }
     : null;
 
+  const pathname = getPathname({ locale, href: `/blog/${slug}` });
+
   return {
     title: metadata.title,
     description: metadata.description,
     alternates: {
-      canonical: getPathname({ locale, href: `/blog/${slug}` }),
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}${pathname}`,
     },
     openGraph: {
       type: 'article',

@@ -17,12 +17,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'aboutPage' });
 
-  const url = getPathname({ locale, href: `/about` });
+  const pathname = getPathname({ locale, href: '/about' });
 
   return generatePageMetadata({
     title: t('metadata.title'),
     description: t('metadata.description'),
-    url,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}${pathname}`,
     locale,
   });
 }
