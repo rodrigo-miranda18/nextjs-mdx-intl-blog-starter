@@ -47,7 +47,7 @@ export default function Header() {
 
           <div className="hidden w-[1px] rotate-[24deg] bg-secondary-border lg:block" />
 
-          <div className="hidden text-lg font-semibold text-text lg:block">Next.js Blog</div>
+          <div className="hidden text-lg font-semibold text-foreground lg:block">Next.js Blog</div>
         </Link>
 
         <div className="flex items-center gap-10">
@@ -59,7 +59,7 @@ export default function Header() {
               <Link
                 key={menuItem.link}
                 href={menuItem.link}
-                className="text-[15px] text-secondary-text transition-colors hover:text-text"
+                className="text-[15px] text-secondary-foreground transition-colors hover:text-foreground"
               >
                 {menuItem.name}
               </Link>
@@ -70,7 +70,7 @@ export default function Header() {
             <LanguageSelector />
             <ThemeToggle />
 
-            <button className="text-tertiary-text lg:hidden" onClick={toggleMenu}>
+            <button className="text-tertiary-foreground lg:hidden" onClick={toggleMenu}>
               {menuOpen && <X className="h-5 w-5" />}
               {!menuOpen && <Menu className="h-5 w-5" />}
             </button>

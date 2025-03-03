@@ -42,7 +42,7 @@ export default async function TagArchiveTemplate({ locale, tag, page }: Template
                 <Link
                   href={`/tags/${tagItem.name}`}
                   className={cn(
-                    'text-sm uppercase text-secondary-text hover:font-semibold hover:text-main',
+                    'text-sm uppercase text-secondary-foreground hover:font-semibold hover:text-main',
                     tagItem.name === tag && 'font-semibold text-main',
                   )}
                 >
@@ -60,7 +60,7 @@ export default async function TagArchiveTemplate({ locale, tag, page }: Template
             key={post.slug}
             className="relative border-b border-border pb-10 last:border-b-0"
           >
-            <dl className="mb-2 text-sm text-secondary-text dark:text-tertiary-text">
+            <dl className="mb-2 text-sm text-secondary-foreground dark:text-tertiary-foreground">
               <dt className="sr-only">Published on</dt>
               <dd>
                 <time dateTime={post.metadata.publishedDate}>
@@ -87,7 +87,7 @@ export default async function TagArchiveTemplate({ locale, tag, page }: Template
               </div>
             )}
 
-            <p className="mt-5 text-base leading-7 text-tertiary-text">
+            <p className="mt-5 text-base leading-7 text-tertiary-foreground">
               {post.metadata.description}
             </p>
 

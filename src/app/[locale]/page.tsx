@@ -25,9 +25,9 @@ export default async function HomePage({ params }: PageProps) {
         <div className="space-y-18 border-l border-border">
           {posts.map((post) => (
             <article key={post.slug} className="relative pl-6 md:pl-12">
-              <Circle className="absolute right-full top-1 h-[10px] w-[10px] translate-x-1 bg-background text-tertiary-text md:top-0" />
+              <Circle className="absolute right-full top-1 h-[10px] w-[10px] translate-x-1 bg-background text-tertiary-foreground md:top-0" />
 
-              <dl className="mb-2 whitespace-nowrap text-sm font-semibold text-secondary-text dark:text-tertiary-text lg:absolute lg:right-full lg:top-0 lg:mb-0 lg:-translate-x-12">
+              <dl className="mb-2 whitespace-nowrap text-sm font-semibold text-secondary-foreground dark:text-tertiary-foreground lg:absolute lg:right-full lg:top-0 lg:mb-0 lg:-translate-x-12">
                 <dt className="sr-only">Published on</dt>
                 <dd>
                   <time dateTime={post.metadata.publishedDate}>
@@ -54,7 +54,7 @@ export default async function HomePage({ params }: PageProps) {
                 </div>
               )}
 
-              <p className="mt-3 text-base leading-7 text-tertiary-text">
+              <p className="mt-3 text-base leading-7 text-tertiary-foreground">
                 {post.metadata.description}
               </p>
 

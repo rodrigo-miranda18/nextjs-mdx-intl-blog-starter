@@ -71,7 +71,7 @@ export default async function PostSingle({ params }: PageProps) {
 
         <dl className="mt-8">
           <dt className="sr-only">Published on</dt>
-          <dd className="text-sm text-secondary-text">
+          <dd className="text-sm text-secondary-foreground">
             <time dateTime={post.metadata.publishedDate}>
               {formatPostDate(post.metadata.publishedDate, locale)}
             </time>
@@ -80,7 +80,9 @@ export default async function PostSingle({ params }: PageProps) {
 
         <h1 className="mt-3 text-5xl font-semibold leading-tight">{post.metadata.title}</h1>
 
-        <p className="mt-5 text-base leading-7 text-secondary-text">{post.metadata.description}</p>
+        <p className="mt-5 text-base leading-7 text-secondary-foreground">
+          {post.metadata.description}
+        </p>
 
         <dl className="mt-6">
           <dt className="sr-only">Time to read</dt>

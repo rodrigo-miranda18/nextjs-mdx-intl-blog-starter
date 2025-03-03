@@ -70,7 +70,7 @@ export default async function AboutPage({ params }: PageProps) {
 
           <h2 className="mt-6 text-xl font-semibold">{t('name')}</h2>
 
-          <div className="mt-2 text-base leading-7 text-secondary-text">
+          <div className="mt-2 text-base leading-7 text-secondary-foreground">
             {t('role')}
             <br />
             {t('bio')}
@@ -90,7 +90,7 @@ export default async function AboutPage({ params }: PageProps) {
           </div>
         </div>
 
-        <p className="basis-[63%] whitespace-pre-line leading-7 text-secondary-text">
+        <p className="basis-[63%] whitespace-pre-line leading-7 text-secondary-foreground">
           {t('content', { age })}
         </p>
       </main>

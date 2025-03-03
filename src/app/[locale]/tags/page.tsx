@@ -39,7 +39,7 @@ export default async function TagsPage({ params }: PageProps) {
         {tags.map((tag) => (
           <li key={tag.name}>
             <Link href={`/tags/${tag.name}`} className="text-sm font-semibold uppercase text-main">
-              {tag.name} <span className="text-text">({tag.count})</span>
+              {tag.name} <span className="text-foreground">({tag.count})</span>
             </Link>
           </li>
         ))}
