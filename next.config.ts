@@ -1,18 +1,24 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 import createMDX from '@next/mdx';
+import remarkToc from 'remark-toc';
+import rehypeSlug from 'rehype-slug';
 
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   experimental: {
-    mdxRs: true,
+    mdxRs: false, // MDX-related plugins does not work with the rust compiler enabled
   },
 };
 
 const withMDX = createMDX({
-  // Add markdown plugins here, as desired
+  options: {
+    remarkPlugins: [[remarkToc, { heading: 'Table of contents' }]],
+    rehypePlugins: [rehypeSlug],
+    // Add markdown plugins here, as desired
+  },
 });
 
 export default withNextIntl(withMDX(nextConfig));

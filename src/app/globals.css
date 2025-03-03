@@ -26,6 +26,10 @@
   --color-secondary-border: #FFFFFF14;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--color-foreground);
   background: var(--color-background);
