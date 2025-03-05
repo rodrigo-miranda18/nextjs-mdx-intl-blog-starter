@@ -13,7 +13,7 @@ interface TemplateLayoutProps {
   page?: number;
 }
 
-export const POSTS_PER_PAGE = 4;
+export const POSTS_PER_PAGE = 3;
 
 export default async function TagArchiveTemplate({ locale, tag, page }: TemplateLayoutProps) {
   const blogTranslations = await getTranslations({ locale, namespace: 'blogPage' });
