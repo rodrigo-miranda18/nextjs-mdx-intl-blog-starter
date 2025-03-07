@@ -7,7 +7,7 @@ import { notFound } from 'next/navigation';
 import { Geist } from 'next/font/google';
 
 import generatePageMetadata from '@/lib/utils/seo';
-import { getPathname, routing } from '@/i18n/routing';
+import { getPathname, Locale, routing } from '@/i18n/routing';
 
 import Header from './header';
 
@@ -50,7 +50,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as 'en' | 'pt-BR')) {
+  if (!routing.locales.includes(locale as Locale)) {
     notFound();
   }
 
