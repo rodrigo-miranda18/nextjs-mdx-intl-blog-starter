@@ -26,8 +26,10 @@ You can visit the [Blog Demo](https://nextjs-mdx-intl-blog-starter.vercel.app/).
 - Post SEO using Next.js metadata
 - Sitemap and robots.txt
 - Perfect Lighthouse score
+- Analytics (if you deployed on [Vercel](https://vercel.com/))
 - Post tagging
 - Table of Contents
+- Styled code blocks
 
 ## Quick Start Guide
 
@@ -74,7 +76,7 @@ NEXT_PUBLIC_BASE_URL="Your base url comes here"
 - `src/components/language-selector.tsx` - update available languages and their display format.
 - `translations/*.json` - change the site content, and basic metadata for pages seo, like titles and descriptions, for each locale you support. 
 - `translations/posts/*.mdx` - write your own posts using the `{locale}.mdx` syntax for file names, and also define post metadata (that will be used to build seo too).
-- `src/app/globals.css` - contains global CSS variables including the color scheme for both light and dark modes.
+- `src/app/globals.css` - contains global CSS variables including the color scheme for both light and dark modes, and the color scheme for code blocks.
 - `tailwind.config.ts` - customize Tailwind settings, typography plugin configuration, and extend theme colors.
 - `src/app/[locale]/layout.tsx` - modify the font family using [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts).
 - `public/logo.svg` - replace with your own logo.
@@ -88,9 +90,9 @@ NEXT_PUBLIC_BASE_URL="Your base url comes here"
 
 ## Deploy
 
-The easiest way to deploy this template is on [Vercel](https://vercel.com/). Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The easiest way to deploy this template is on [Vercel](https://vercel.com/). Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details. This template has Vercel Analytics in source code by default. To enable the analytics, follow this [simple guide](https://vercel.com/docs/analytics/quickstart#enable-web-analytics-in-vercel).
 
-You can also use another host providers, like [Netlify](https://www.netlify.com/), [AWS](https://aws.amazon.com/), etc. Netlify usually doesn't require any additional configurations for Next.js projects, but another providers may require custom configuration and setup to support Next.js functionalities.
+You can also use another host providers, like [Netlify](https://www.netlify.com/), [AWS](https://aws.amazon.com/), etc. Netlify usually doesn't require any additional configurations for Next.js projects, but another providers may require custom configuration and setup to support Next.js functionalities, such as SSR, ISR, and image optimization.
 
 ## Support
 
@@ -98,3 +100,4 @@ Support this effort by giving a star on GitHub. If you are using this template, 
 
 ## License
 
+[MIT](https://github.com/rodrigo-miranda18/nextjs-mdx-intl-blog-starter/blob/master/LICENSE) © [Rodrigo Miranda](https://rodrigoamiranda.dev)
