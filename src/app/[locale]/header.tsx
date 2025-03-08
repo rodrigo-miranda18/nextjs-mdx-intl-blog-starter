@@ -60,6 +60,7 @@ export default function Header() {
                 key={menuItem.link}
                 href={menuItem.link}
                 className="text-[15px] text-secondary-foreground transition-colors hover:text-foreground"
+                onClick={toggleMenu}
               >
                 {menuItem.name}
               </Link>

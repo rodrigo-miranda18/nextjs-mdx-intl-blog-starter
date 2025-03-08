@@ -2,10 +2,11 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import { ChevronLeft } from 'lucide-react';
 
 import { formatPostDate, getPost, getPostSlugs } from '@/lib/utils/posts';
-import { getPathname, Link, routing } from '@/i18n/routing';
+import { getPathname, routing } from '@/i18n/routing';
+
+import GoBackButton from '@/components/go-back-button';
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -66,10 +67,7 @@ export default async function PostSingle({ params }: PageProps) {
 
     return (
       <article className="mx-auto max-w-3xl px-6 pb-16 pt-20">
-        <Link href="/blog" className="flex items-center gap-x-1 text-sm font-semibold text-main">
-          <ChevronLeft size={20} />
-          {t('goBack')}
-        </Link>
+        <GoBackButton>{t('goBack')}</GoBackButton>
 
         <dl className="mt-8">
           <dt className="sr-only">Published on</dt>
