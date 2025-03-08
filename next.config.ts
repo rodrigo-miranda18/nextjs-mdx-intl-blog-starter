@@ -3,6 +3,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 import createMDX from '@next/mdx';
 import remarkToc from 'remark-toc';
 import rehypeSlug from 'rehype-slug';
+import remarkSugarHigh from 'remark-sugar-high';
 
 const withNextIntl = createNextIntlPlugin();
 
@@ -15,7 +16,7 @@ const nextConfig: NextConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [[remarkToc, { heading: 'Table of contents' }]],
+    remarkPlugins: [[remarkToc, { heading: 'Table of contents' }], remarkSugarHigh],
     rehypePlugins: [rehypeSlug],
     // Add markdown plugins here, as desired
   },

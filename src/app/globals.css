@@ -13,6 +13,16 @@
   --color-secondary-border: #EAEAEA;
 
   --color-main: #0074DE;
+
+  --sh-class: #0074DE;
+  --sh-identifier: #EDEDED;
+  --sh-sign: #8996A3;
+  --sh-property: #0074DE;
+  --sh-entity: #249A97;
+  --sh-jsxliterals: #6266D1;
+  --sh-string: #00A99A;
+  --sh-keyword: #EA4F4F;
+  --sh-comment: #A19595;
 }
 
 .dark {
