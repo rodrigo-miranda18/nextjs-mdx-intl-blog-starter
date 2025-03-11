@@ -80,7 +80,7 @@ NEXT_PUBLIC_BASE_URL="Your base url comes here"
 - `tailwind.config.ts` - customize Tailwind settings, typography plugin configuration, and extend theme colors.
 - `src/app/[locale]/layout.tsx` - modify the font family using [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts).
 - `public/logo.svg` - replace with your own logo.
-- `public/avatar.jpg` - replace with your own avatar.
+- `public/avatar.webp` - replace with your own avatar.
 - `src/app/favicon.ico` - replace with your favicon.
 - `src/mdx-components.tsx` - customize the rendering of MDX elements and add custom components for your blog posts.
 - `src/app/[locale]/tags/[tag]/tag-archive-template.tsx` - adjust the `POSTS_PER_PAGE` constant to control pagination.

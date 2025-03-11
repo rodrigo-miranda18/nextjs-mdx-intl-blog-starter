@@ -66,7 +66,13 @@ export default async function AboutPage({ params }: PageProps) {
 
       <main className="mt-10 flex flex-col gap-8 md:flex-row">
         <div className="flex basis-[37%] flex-col items-center text-center">
-          <Image className="rounded-full" src="/avatar.jpg" alt="avatar" width={192} height={192} />
+          <Image
+            className="rounded-full"
+            src="/avatar.webp"
+            alt="avatar"
+            width={192}
+            height={192}
+          />
 
           <h2 className="mt-6 text-xl font-semibold">{t('name')}</h2>
 
